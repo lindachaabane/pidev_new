@@ -1,0 +1,54 @@
+<div class="container">
+  <header class="jumbotron">
+    <p class="text-center"><strong>This is an {{ content }} where you can manage user accounts only, add roles, change user settings, etc...</strong> </p>
+  </header>
+</div>
+<div class="d-flex align-items-center">
+  <a class="btn btn-link" (click)="goBack()">
+    <i class="fas fa-arrow-left"></i>
+  </a>
+</div>
+
+<div class="d-flex justify-content-center mt-4">
+
+  <div class="input-group w-50">
+    <input type="text" class="form-control" placeholder="Search.." [(ngModel)]="searchFilter">
+
+  </div>
+</div>
+<br>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th class="text-center" >Matricule</th>
+    <th class="text-center" >Username</th>
+    <th class="text-center" >Email</th>
+    <th class="text-center">Roles</th>
+    <th class="text-center">edit</th>
+    <th class="text-center">delete</th>
+  </tr>
+  </thead>
+  <tbody *ngIf="data">
+  <tr *ngFor="let user of data | filter: searchFilter">
+    <td class="text-center">{{ user.id }}</td>
+    <td class="text-center">{{ user.username }}</td>
+    <td class="text-center">{{ user.email }}</td>
+    <td class="text-center">
+      <ul class="role-list">
+        <li *ngFor="let role of user.roles">
+          <input type="checkbox" [checked]="true" disabled>
+          <label>{{ role.name }}</label>
+        </li>
+      </ul>
+    </td>
+    <td class="text-center">
+      <i class="fas fa-edit" (click)="getUserId(user.id)" *ngIf="user.id !== currentUserId"></i>
+    </td>
+    <td class="text-center">
+      <i class="fas fa-trash" *ngIf="user.id !== currentUserId" (click)="deleteUser(user.id)"></i>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<br>

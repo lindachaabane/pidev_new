@@ -1,0 +1,66 @@
+<div class="container">
+  <header class="jumbotron">
+    <p class="text-center"><strong>This is an {{ content }} Here you can see a summary of the data in your application</strong> </p>
+  </header>
+</div>
+
+
+<div class="d-flex align-items-center">
+  <a class="btn btn-link" (click)="goBack()">
+    <i class="fas fa-arrow-left"></i>
+  </a>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card bg-info text-white">
+        <div class="card-body">
+          <h5 class="card-title">Number of Users</h5>
+          <p class="card-text">{{ userCount }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card bg-primary text-white">
+        <div class="card-body">
+          <h5 class="card-title">Number of Departments</h5>
+          <p class="card-text">{{ departementCount }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <div class="card bg-info text-white">
+        <div class="card-body">
+          <h5 class="card-title">Role Statistics</h5>
+          <div *ngFor="let role of roleKeys">
+            <p>{{ role }}: {{ roleStatistics[role] }} %</p>
+          </div>
+          <div *ngIf="roleKeys.length === 0">
+            <p>No role statistics available.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card bg-primary text-white">
+        <div class="card-body">
+          <h5 class="card-title">User Count by Department</h5>
+          <div *ngFor="let department of departmentKeys">
+            <p>{{ department }}: {{ userCountByDepartement[department] }}</p>
+          </div>
+          <div *ngIf="departmentKeys.length === 0">
+            <p>No user count by department available.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

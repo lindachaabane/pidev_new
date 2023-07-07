@@ -1,0 +1,112 @@
+<!--<div class="container">
+  <h2>Update User</h2>
+  <form (ngSubmit)="updateUser()" #updateUserForm="ngForm">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" name="username" [(ngModel)]="user.username" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" required>
+    </div>
+    <div class="form-group">
+      <label for="roles">Roles</label>
+      <select class="form-control" id="roles" name="roles" [(ngModel)]="user.roles" multiple required>
+        <option *ngFor="let role of user.roles" [value]="role">{{ role.name }}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Update User</button>
+  </form>
+</div>
+-->
+<!--
+<div class="container">
+  <div class="form-container">
+    <h2>Account details</h2>
+    <form (ngSubmit)="updateUser()" #updateUserForm="ngForm">
+      <div class="form-group">
+        <label for="id">Matricule</label>
+        <input type="text" class="form-control" id="id" name="id" [(ngModel)]="user.id" required disabled>
+      </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" [(ngModel)]="user.username" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" required>
+      </div>
+      <div class="form-group">
+        <label>Existing Roles</label>
+        <div class="form-check" *ngFor="let role of user.roles">
+          <input class="form-check-input" type="checkbox" id="{{ role.name }}" name="roles" [(ngModel)]="role.checked">
+          <label class="form-check-label" for="{{ role.name }}">{{ role.name }}</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Available Roles</label>
+        <div class="form-check" *ngFor="let role of availableRoles">
+          <input class="form-check-input" type="checkbox" id="{{ role.name }}" name="newRoles" [(ngModel)]="newRoles[role.name]">
+          <label class="form-check-label" for="{{ role.name }}">{{ role.name }}</label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Update User</button>
+    </form>
+  </div>
+  <div class="role-description">
+    <h3>Reminder</h3>
+    <p><strong>ROLE_USER:</strong> This role allows the user to access certain screens of the application.</p>
+    <p><strong>ROLE_ADMIN:</strong> This role grants the user full privileges in the application.</p>
+  </div>
+</div>-->
+<div class="d-flex align-items-center">
+  <a class="btn btn-link" (click)="goBack()">
+    <i class="fas fa-arrow-left"></i>
+  </a>
+</div>
+<div class="container">
+  <div class="form-container">
+    <h2 class="form-heading">Account Details</h2>
+    <form (ngSubmit)="updateUser()" #updateUserForm="ngForm">
+      <div class="form-group">
+        <label for="id">Personnel number</label>
+        <input type="text" class="form-control" id="id" name="id" [(ngModel)]="user.id" required disabled>
+      </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" [(ngModel)]="user.username" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" required>
+      </div>
+      <div class="form-group">
+        <label>Current roles</label>
+        <div class="form-check" *ngFor="let role of user.roles">
+          <input class="form-check-input" type="checkbox" id="{{ role.name }}" name="roles" [(ngModel)]="role.checked">
+          <label class="form-check-label" for="{{ role.name }}">{{ role.name }}</label>
+        </div>
+        <p class="remark">To keep the user's original role, please tick the options above.</p>
+
+      </div>
+      <div class="form-group">
+        <label>Available roles</label>
+        <div class="form-check" *ngFor="let role of availableRoles">
+          <input class="form-check-input" type="checkbox" id="{{ role.name }}" name="newRoles" [(ngModel)]="newRoles[role.name]">
+          <label class="form-check-label" for="{{ role.name }}">{{ role.name }}</label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Update User</button>
+    </form>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+

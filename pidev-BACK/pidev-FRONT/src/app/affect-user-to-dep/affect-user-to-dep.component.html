@@ -1,0 +1,43 @@
+<div class="container">
+  <header class="jumbotron">
+    <p class="text-center"><strong>This is an {{ content }} where you can manage users and departments. Here you will see users without a department and you can assign users to a department.</strong></p>
+  </header>
+</div>
+  <div class="d-flex align-items-center">
+     <a class="btn btn-link" (click)="goBack()">
+       <i class="fas fa-arrow-left"></i>
+     </a>
+   </div>
+
+
+<table class="table user-table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Matricule</th>
+    <th scope="col">Username</th>
+    <th scope="col">Email</th>
+    <th scope="col">Department</th>
+    <th scope="col">Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of usersWithoutDepartment">
+    <td>{{ user.id }}</td>
+    <td>{{ user.username }}</td>
+    <td>{{ user.email }}</td>
+    <td>
+      <select class="form-control" [(ngModel)]="selectedDepartmentIds[user.id]">
+        <option value="">Select a department</option>
+        <option *ngFor="let department of data" [value]="department.id">{{ department.name }}</option>
+      </select>
+    </td>
+    <td>
+      <button class="btn btn-primary" (click)="assignUserToDepartment(user.id, selectedDepartmentIds[user.id])" [disabled]="!selectedDepartmentIds[user.id]">Affecter</button>
+    </td>
+  </tr>
+  <tr *ngIf="usersWithoutDepartment.length === 0">
+    <td colspan="5" class="text-center">There is no user without a department.</td>
+  </tr>
+  </tbody>
+</table>
+

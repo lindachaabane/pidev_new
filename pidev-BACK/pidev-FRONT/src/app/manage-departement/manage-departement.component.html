@@ -1,0 +1,28 @@
+<div class="container">
+  <header class="jumbotron">
+    <p class="text-center"><strong>This is an {{ content }} related to department topics, where you can manage departments only, add dept, Display users by departments, etc...</strong> </p>
+  </header>
+</div>
+<div class="d-flex align-items-center">
+  <a class="btn btn-link" (click)="goBack()">
+    <i class="fas fa-arrow-left"></i>
+  </a>
+</div>
+<div class="add-department-form">
+  <input type="text" class="department-input" placeholder="Department Name" [(ngModel)]="departmentName">
+  <button class="add-button" (click)="createDepartment()">Add Department</button>
+  <button class="affect-button" (click)="navigateToAffectUser()">Affect User to Department</button>
+</div>
+<div class="department-list">
+  <div *ngIf="data.length === 0" class="no-department-message">No department has been created yet.</div>
+  <div class="department-card" *ngFor="let department of data" >
+    <h3 class="department-name">{{ department.name }}</h3>
+    <p class="user-count">Number of Users: {{ department.users.length }}</p>
+    <div class="icons">
+      <i class="material-icons edit-icon" (click)="getDep(department.id,department.name)">edit</i>
+      <i class="material-icons delete-icon"  (click)="deleteDepartment(department.id, department.users.length)">delete</i>
+    </div>
+  </div>
+</div>
+
+
